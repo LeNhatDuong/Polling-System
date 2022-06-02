@@ -75,10 +75,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'pollingsystem'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': 5432,
+        # you should change this
+        'USER': os.environ.get('DB_USER', 'eastagile'),
+        'PASSWORD': os.environ.get('DB_PASS', '123456'),     # and also this
     }
 }
+
 
 
 # Password validation
@@ -105,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'UTC+07:00'
 
 USE_I18N = True
 
